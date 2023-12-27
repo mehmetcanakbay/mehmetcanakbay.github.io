@@ -1,0 +1,23 @@
+@keyframes scaleOutX {
+    from {
+        transform: scaleX(100%);
+        transform-origin: right;
+    } 
+    to {
+        transform: scaleX(0%);
+        transform-origin: right;
+    }
+}
+
+
+[data-tab-content] {
+    display: none;
+}
+
+.active[data-tab-content] {
+    display: block;
+}
+
+.active[data-tab-target] {
+    opacity: 1;
+}

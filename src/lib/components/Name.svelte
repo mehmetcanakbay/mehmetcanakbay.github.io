@@ -10,7 +10,7 @@
 </script>
 
 
-<div class="flex flex-col w-96 gap-2">
+<div class="flex flex-col w-96 gap-2 overflow-hidden">
     <h1 class="font-bold text-5xl text-ash-gray-100 self-center transition-opacity 
     duration-300 {pageLoaded ? "opacity-100" : "opacity-0"}">MEHMET CAN</h1>
     <div class="w-11/12 self-center h-1 bg-pinky-red-200 {pageLoaded ? "scale-x-100" : "scale-x-0"} transition-transform duration-1000"></div>
