@@ -75,14 +75,10 @@
     }`
 
     
-        
-
-
-
-
-
+    
 </script>
 
+<h1 class="absolute top-20 left-80 text-red-50 text-4xl z-20">!!WIP - DO NOT TAKE IT AT FACE VALUE - RESPONSIVE DESIGN CURRENTLY BROKEN!!</h1>
 <div class="flex flex-col md:flex-row h-full w-full">
     <div class="w-full md:w-4/12 h-screen px-12 py-12 flex flex-col gap-4 md:gap-12">
         <div class="name-holder w-full">

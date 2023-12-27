@@ -7,6 +7,8 @@ const config = {
 			"sans": ['outfit', 'system-ui']
 		},
 
+		
+		/*Extend breaks the backdrop blur for some reason.*/
 		colors: {
 			"pinky-red": {
 				100: '#e1335f',
@@ -21,11 +23,15 @@ const config = {
 				200: '#C6C6C6',
 				800: '#141414',
 				900: '#070707',
+			},
+			"red": {
+				50: '#FF0000'
 			}
 		},
+		
+		extend: {		
+		}
 
-
-		extend: {}
 	},
 
 	plugins: []
