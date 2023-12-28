@@ -10,8 +10,8 @@
 </script>
 
 
-<div class="flex flex-col w-96 gap-2 overflow-hidden">
-    <h1 class="font-bold text-5xl text-ash-gray-100 self-center transition-opacity 
+<div class="flex flex-col w-auto gap-2 overflow-hidden">
+    <h1 class="font-bold text-4xl md:text-5xl text-ash-gray-100 self-center transition-opacity 
     duration-300 {pageLoaded ? "opacity-100" : "opacity-0"}">MEHMET CAN</h1>
     <div class="w-11/12 self-center h-1 bg-pinky-red-200 {pageLoaded ? "scale-x-100" : "scale-x-0"} transition-transform duration-1000"></div>
     <!-- <img src="svgs/surname.svg" class="w-32 self-center -mt-4 stroke-surname" alt=""> -->
