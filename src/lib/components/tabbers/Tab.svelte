@@ -5,7 +5,6 @@
 	const tab = {};
 	const { registerTab, selectTab, selectedTab } = getContext(TABS);
 
-	export let selectedStyle;
 
 	registerTab(tab);
 </script>
@@ -13,12 +12,11 @@
 <style>
 
 	.selected {
-		border-bottom: 2px solid teal;
-		color: #0026ff;
+		@apply bg-ash-gray-200 text-ash-gray-800;
 	}
 </style>
 
-<button class={$$props.class + ` ${$selectedTab === tab ? selectedStyle : ' ' }`} on:click="{() => {
+<button class:selected={$selectedTab === tab} class="bg-ash-gray-900 px-4 py-[0.35rem] rounded-bl-lg rounded-tr-lg transition-colors duration-300" on:click="{() => {
 		selectTab(tab)
 	}}">
 	<slot></slot>

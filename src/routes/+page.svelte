@@ -6,27 +6,37 @@
     import Prism from 'prismjs';
     import "./prism.css"
     import "prismjs/components/prism-csharp"
+    import SANGIDescription from "$lib/descriptions/SANGIDescription.svelte"
 
     let pageLoaded : boolean = false
     onMount(()=>{
         pageLoaded = true
         const tabs = document.querySelectorAll('[data-tab-target]')
         const tabsContents = document.querySelectorAll('[data-tab-content]')
+        const tabsContentsDescriptors = document.querySelectorAll('[data-tab-descriptor]')
         console.log(tabs[0]);
 
         tabs.forEach(tab => {
             tab.addEventListener("click", () => {
-                const target = document.querySelector(tab.dataset.tabTarget)
+                const target = document.querySelectorAll(tab.dataset.tabTarget)
                 tabsContents.forEach(content=>{
                     content.classList.remove("active")
                 })
 
                 tabs.forEach(element => {
                     element.classList.remove("active")
-                });
+                })
+
+                tabsContentsDescriptors.forEach(element => {
+                    element.classList.remove("active")
+                })
+
                 console.log(target);
-                target.classList.add("active")
+                target.forEach(element => {
+                    element.classList.add("active")
+                })
                 tab.classList.add("active")
+
             })
         })
     })
@@ -164,7 +174,7 @@
                     that apply their own element on enemies, which can then cause a reaction if another element
                     hits the affected enemy. It's available on Steam. For more details, scroll down. </Explanation>
             </div>
-            <div id="ability-system" data-tab-content class="h-full text-ash-gray-100 overflow-y-scroll scrollbar-hide w-full">
+            <div id="ability-system" data-tab-content class="h-full text-ash-gray-100 overflow-y-scroll scrollbar-hide w-full bg-[rgb(14,14,14)]">
                 <div class="text-xs md:text-sm">
                     <pre><code>
                         {@html Prism.highlight(abilitySystemCode, Prism.languages["csharp"])}
@@ -180,11 +190,56 @@
             <div id="deep-learning" data-tab-content class="h-full text-ash-gray-100 overflow-y-scroll scrollbar-hide w-full">
 
             </div>
-
         </div>
     </div>
 </div>
 
+<!--divider-->
+<div class="w-full h-2 bg-ash-gray-900"></div>
+<!---->
+
+<div class="descriptions px-4 md:px-52 py-8 pb-28" >
+    <div id="SANGI" data-tab-descriptor class="active">
+        <div class="flex flex-col gap-0 pb-1">
+            <h1 class="text-4xl md:text-6xl text-ash-gray-100 font-semibold">SANGI</h1>
+            <h3 class="text-2xl md:text-2xl text-ash-gray-400 font-medium -mt-1">2D Action Platformer Game</h3>
+        </div>
+
+        <SANGIDescription/>
+    </div>
+
+    <div id="ability-system" data-tab-descriptor>
+        <div class="flex flex-col gap-0 pb-1">
+            <h1 class="text-3xl md:text-6xl text-ash-gray-100 font-semibold">Ability System</h1>
+            <h3 class="text-xl md:text-2xl text-ash-gray-400 font-medium ">Ability System made for Unity</h3>
+        </div>
+
+        <div class="text-ash-gray-200 text-base md:text-lg py-4">
+            <p class="py-2">
+                This is the ability system I have used in my released game. Main reason why its so useful is that <b>it solves</b>
+                a lot of the problems an ability might have, such as <b>cooldowns</b>, what to do once its <b>ready</b>, if it has a duration, 
+                <b>what to do while it ticks</b> etc.
+            </p>
+
+            <p class="py-2">
+                There are 3 scripts, -AbilityBase, AbilityComponent and AbilityDataHolder- and these work together to make the system tick.
+                In short, AbilityBase is the script where ability logic like cooldowns, what happens when its ready, what happens when its activated etc. happens. This is the logic of the system.
+                AbilityDataHolder is a ScriptableObject, and with overrideable functions, you can write your own ability logic, to then add to AbilityComponent. You can think of this as "logic data holder".
+                AbilityComponent holds creates and holds AbilityBases, basically its the initializer and maintainer.
+            </p>
+
+            <p class="py-2">
+                For more information and its usage in code, with an example project, check out my repostiory.
+            </p>
+
+            <div class="py-4">
+                <a href="https://github.com/mehmetcanakbay/abilitySystem-unity" class="text-pinky-red-100 font-extrabold text-xl">Link to the repository</a>
+            </div>
+        </div>
+
+
+    </div>
+</div>
 <!-- <h1 class="bg-pinky-red-100 h-96">DETAILS</h1> -->
 <style>
 
@@ -214,6 +269,10 @@
     .scrollbar-hide {
         -ms-overflow-style: none;  /* IE and Edge */
         scrollbar-width: none;  /* Firefox */
+    }
+    
+    b {
+        @apply text-ash-gray-100;
     }
     
 </style>
