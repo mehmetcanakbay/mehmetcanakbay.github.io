@@ -18,15 +18,16 @@
 
         <p class="py-2">
             Main takeaway here is that all of these systems blend in with each other <b class="text-ash-gray-100">extremely well</b>. For example, every weapon can
-            apply a <b class="text-ash-gray-100">unique element</b> to the enemy. There are 4 weapons in total. All of these weapons have <b class="text-ash-gray-100">3 different abilities</b> 
+            apply a <b class="text-ash-gray-100">unique element</b> to the enemy. There are 4 weapons in total. <b class="text-ash-gray-100">All of these weapons have 3 different abilities</b> 
             that are available once you switch to them.
             These abilities also apply these elements to the enemy. <b class="text-ash-gray-100">You can switch your weapon any time</b> to apply another element to the enemy.
-            When the enemy makes contact with an another element while having the effects of an another one, elements will react and <b class="text-ash-gray-100">these reactions
+            When the enemy makes <b class="text-ash-gray-100">contact with an another element while having the effects of an another one</b>, elements will react and <b class="text-ash-gray-100">these reactions
             will have different effects</b>. 
         </p>
         <p class="py-2">
             One thing to keep in mind is that, every weapon or ability apply their elements <b class="text-ash-gray-100">a certain amount</b>. All weapon attacks
-            apply <b class="text-ash-gray-100">1 unit of their elements except water</b>, but there are abilities where <b class="text-ash-gray-100">they can apply 3 units of their respective elements</b>.
+            apply <b class="text-ash-gray-100">1 unit of their elements except water</b>, but there are abilities where, for example,
+            <b class="text-ash-gray-100">can apply 3 units of their respective elements</b>.
 
         </p>
         <p class="py-2">

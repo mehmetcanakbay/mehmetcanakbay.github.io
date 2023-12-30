@@ -6,19 +6,44 @@
     import Prism from 'prismjs';
     import "./prism.css"
     import "prismjs/components/prism-csharp"
+    import "prismjs/components/prism-python"
     import SANGIDescription from "$lib/descriptions/SANGIDescription.svelte"
-
+    import DlDescription from "$lib/descriptions/DLDescription.svelte";
+    import Swiper from "swiper"
+    import {Autoplay} from "swiper/modules"
+    import "swiper/css"
+    import { codeExamples } from "./codeExamples";
+    let swiper : Swiper;
     let pageLoaded : boolean = false
     onMount(()=>{
         pageLoaded = true
+        HandleMainTabbers()
+        SwiperInitializer()
+
+    })
+
+    function SwiperInitializer() {
+        swiper = new Swiper('.deepLearningSwiperContainer', {
+            modules: [Autoplay],
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false
+            },
+        });
+
+        swiper.autoplay.stop()
+    }
+
+    function HandleMainTabbers() {
         const tabs = document.querySelectorAll('[data-tab-target]')
         const tabsContents = document.querySelectorAll('[data-tab-content]')
         const tabsContentsDescriptors = document.querySelectorAll('[data-tab-descriptor]')
-        console.log(tabs[0]);
 
         tabs.forEach(tab => {
             tab.addEventListener("click", () => {
                 const target = document.querySelectorAll(tab.dataset.tabTarget)
+                swiper.autoplay.pause()
+
                 tabsContents.forEach(content=>{
                     content.classList.remove("active")
                 })
@@ -36,67 +61,16 @@
                 })
                 tab.classList.add("active")
 
+                console.log(tab.dataset.tabTarget === "#deep-learning");
+                
+                if (tab.dataset.tabTarget === "#deep-learning") {
+                    swiper.autoplay.start()
+                }
+
             })
         })
-    })
-
-    //Spaces at the end must exist to let user scroll down a little bit.
-    const abilitySystemCode = 
-    `
-    using System.Collections;
-    using System.Collections.Generic;
-    using UnityEngine;
-
-    [CreateAssetMenu(menuName = "Abilities/AbilityDash")]
-    public class AbilityDash : AbilityDataHolder
-    {
-        [Header("ThisAbilitySettings")]
-        public float dashStaminaNeedAmount = 10.0f; 
-        public float distAmount = 50.0f; 
-        public override void CheckResources(GameObject go)
-        {
-            base.CheckResources(go);
-            float currStamina = PlayerAttributes.Instance.GetCurrentDashStamina();
-            if (currStamina >= dashStaminaNeedAmount) {
-                doesHaveResources = true;
-            } else {
-                doesHaveResources = false;
-            }
-        }
-
-        public override void OnAbilityActivated(GameObject go)
-        {
-            base.OnAbilityActivated(go);
-            Rigidbody rb = go.GetComponent<Rigidbody>();
-            PlayerMovement movementComponent = go.GetComponent<PlayerMovement>();
-            if (rb == null) return;
-
-            rb.AddForce(movementComponent.moveDirection*distAmount, ForceMode.Impulse);
-
-            ConfirmResourceExpense();
-        }
-
-        void ConfirmResourceExpense() {
-            PlayerAttributes.Instance.SetDashStamina(
-                PlayerAttributes.Instance.GetCurrentDashStamina()-
-                dashStaminaNeedAmount
-            );
-        }
     }
-    
-    
-    
-    
 
-
-
-
-
-
-
-    `
-
-    
     
 </script>
 
@@ -108,8 +82,8 @@
 
         <div class="summary mt-24 flex flex-col gap-2 relative">
             <!--this is the animation div no delay to this-->
-            <div class="w-full h-auto relative overflow-hidden">
-                <div class="w-full h-full absolute top-0 bg-pinky-red-100 
+            <div class="w-full h-auto relative">
+                <div class="w-[105%] h-full absolute top-0 bg-pinky-red-100 
                 {pageLoaded ? "scale-x-100 origin-left delay05s" : "scale-x-0 origin-left"} z-10"></div>
     
                 <h1 class="text-6xl  text-ash-gray-100 {pageLoaded ? "opacity-100" : "opacity-0"} delay-500">Game &</h1>
@@ -117,8 +91,8 @@
             </div>
             
             <!--animation div again-->
-            <div class="w-full h-auto overflow-hidden relative">
-                <div class="w-full h-full absolute bottom-0 bg-pinky-red-100
+            <div class="w-full h-auto relative">
+                <div class="w-[105%] h-full absolute bottom-0 bg-pinky-red-100
                 {pageLoaded ? "scale-x-100 origin-left delay1s" : "scale-x-0 origin-left"} z-10"></div>
     
                 <p class="text-lg text-ash-gray-200 mt-4 {pageLoaded ? "opacity-100" : "opacity-0"} delay-1000">I’m Mehmet Can Akbay, a game and software developer, based in Istanbul. 
@@ -128,7 +102,8 @@
         </div>
 
         <div class="external-links mt-20 md:mt-40 flex flex-col gap-1 relative">
-            <div class="w-full h-full absolute bottom-0 bg-pinky-red-100 
+            <!--animation div again-->
+            <div class="w-[105%] h-full absolute bottom-0 bg-pinky-red-100 
             {pageLoaded ? "scale-x-100 origin-left delay15s" : "scale-x-0 origin-left"} z-10"></div>
 
             <h3 class="text-xl font-bold text-ash-gray-200 {pageLoaded ? "opacity-100" : "opacity-0"} delay-[1.5s]">External Links</h3>
@@ -169,25 +144,56 @@
 
                 </div>
 
-                <Explanation title="Short Description" class="z-10 block bottom-12 md:bottom-32 absolute px-12">I have completed my game, which is a fast paced 2D platformer with 4 different weapons
+                <Explanation title="Short Description" class="z-10 block bottom-12 md:bottom-32 absolute px-4 md:px-12">I have completed my game, which is a fast paced 2D platformer with 4 different weapons
                     that apply their own element on enemies, which can then cause a reaction if another element
                     hits the affected enemy. It's available on Steam. For more details, scroll down. </Explanation>
             </div>
-            <div id="ability-system" data-tab-content class="h-full text-ash-gray-100 overflow-y-scroll scrollbar-hide w-full bg-[rgb(14,14,14)]">
+            <div id="ability-system" data-tab-content class="h-full text-ash-gray-100 overflow-y-scroll scrollbar-hide w-full bg-ash-gray-850">
                 <div class="text-xs md:text-sm">
                     <pre><code>
-                        {@html Prism.highlight(abilitySystemCode, Prism.languages["csharp"])}
+                        {@html Prism.highlight(codeExamples[0], Prism.languages["csharp"], "csharp")}
                     </code></pre>
 
                 </div>
-                <Explanation title="Short Description" class="z-10 block bottom-12 md:bottom-32 absolute px-12">This is an ability system made for Unity.
+                <Explanation title="Short Description" class="z-10 block bottom-12 md:bottom-32 absolute px-4 md:px-12">This is an ability system made for Unity.
                     Using this system helps you while developing multiple abilities because you dont need to keep track of their cooldowns, what to do once it's
                 cooldown is finished etc. they are all available to override in the scriptable object. This here is an example dash ability. For more information and an example
             project, scroll down below.  </Explanation>
             </div>
 
             <div id="deep-learning" data-tab-content class="h-full text-ash-gray-100 overflow-y-scroll scrollbar-hide w-full">
+                <div class=" swiper deepLearningSwiperContainer w-full h-full">
+                    <div class=" swiper-wrapper w-full h-full bg-ash-gray-850">    
+                        <div class="swiper-slide w-full h-full overflow-y-scroll scrollbar-hide text-xs md:text-sm">
+                            <pre><code>
+                                {@html Prism.highlight(codeExamples[1], Prism.languages["python"], "python")}
+                            </code></pre>
+                        </div>
 
+                        <div class="swiper-slide  w-full h-full overflow-y-scroll scrollbar-hide bg-ash-gray-850 text-xs md:text-sm">
+                            <pre><code>
+                                {@html Prism.highlight(codeExamples[2], Prism.languages["python"], "python")}
+                            </code></pre>
+                        </div>
+
+                        <div class="swiper-slide  w-full h-full overflow-hidden ">
+                            <img src="gifs/styletransfer-example2.gif" alt="neural example" class="scale-100 object-fill w-full h-full">
+                        </div>
+
+                        <div class="swiper-slide  w-full h-full overflow-hidden">
+                            <img src="gifs/neuralsite-example.gif" alt="neural example" class="">
+                        </div>
+                    </div>
+                </div>
+
+                <Explanation title="Short Description" class="z-10 block bottom-12 md:bottom-32 absolute px-4 md:px-12">
+                    These are some of the deep learning stuff I have worked on. First one is the main ESRGAN code. ESRGAN is still used for
+                    upscaling diffuse models' output. Second one is the Gatys' Style Transfer architecture.                     
+                    Third one is a gif from my game, which uses Johnson's style transfer model to stylize the game screen. 
+                    Last one is a website I have done,
+                    you can choose losses and learning rates and see how weights shift in real time, coded in vanilla JS with no libraries.
+
+                </Explanation>
             </div>
         </div>
     </div>
@@ -222,21 +228,31 @@
 
             <p class="py-2">
                 There are 3 scripts, -AbilityBase, AbilityComponent and AbilityDataHolder- and these work together to make the system tick.
-                In short, AbilityBase is the script where ability logic like cooldowns, what happens when its ready, what happens when its activated etc. happens. This is the logic of the system.
-                AbilityDataHolder is a ScriptableObject, and with overrideable functions, you can write your own ability logic, to then add to AbilityComponent. You can think of this as "logic data holder".
-                AbilityComponent holds creates and holds AbilityBases, basically its the initializer and maintainer.
+                <br>
+                In short, <b>AbilityBase</b> is the script where <b>system logic</b> like cooldowns, what happens when its ready, what happens when its activated etc. happens. This is the logic of the system.
+                <br>
+                <b>AbilityDataHolder</b> is a ScriptableObject, and with overrideable functions, you can write your own ability logic, to then add to AbilityComponent. You can think of this as <b>"ability logic data holder".</b>
+                <br>
+                <b>AbilityComponent</b> holds creates and holds AbilityBases, basically its the <b>initializer and maintainer</b>.
             </p>
 
             <p class="py-2">
-                For more information and its usage in code, with an example project, check out my repostiory.
+                For more information and its usage, with an example project, check out my repostiory.
             </p>
 
             <div class="py-4">
                 <a href="https://github.com/mehmetcanakbay/abilitySystem-unity" class="text-pinky-red-100 font-extrabold text-xl">Link to the repository</a>
             </div>
         </div>
+    </div>
 
+    <div id="deep-learning" data-tab-descriptor class="">
+        <div class="flex flex-col gap-0 pb-1">
+            <h1 class="text-4xl md:text-6xl text-ash-gray-100 font-semibold">Deep Learning</h1>
+            <h3 class="text-2xl md:text-2xl text-ash-gray-400 font-medium -mt-1">In-depth Explanation of the Works Mentioned</h3>
+        </div>
 
+        <DlDescription/>
     </div>
 </div>
 <!-- <h1 class="bg-pinky-red-100 h-96">DETAILS</h1> -->
