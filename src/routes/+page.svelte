@@ -31,7 +31,6 @@
                     element.classList.remove("active")
                 })
 
-                console.log(target);
                 target.forEach(element => {
                     element.classList.add("active")
                 })
