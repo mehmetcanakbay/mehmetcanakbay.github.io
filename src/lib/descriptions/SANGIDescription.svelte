@@ -2,6 +2,12 @@
     import {Tabs, Tab, TabList, TabPanel} from "$lib/components/tabbers/tabber"
 </script>
 
+<iframe src="https://store.steampowered.com/widget/2649090/" frameborder="0" width="646" height="190" title="gamelink"
+class="hidden md:block my-2"></iframe>
+
+<a class="text-xl text-ash-gray-100 block md:hidden px-2 py-2 bg-pinky-red-600 w-1/2 text-center font-bold rounded-lg my-2"
+href="https://store.steampowered.com/app/2649090/SANGI/">View on Steam</a>
+
 <Tabs>
     <TabList class="flex flex-row gap-4 md:gap-12 py-6 text-ash-gray-100 text-base md:text-xl whitespace-nowrap flex-wrap">
         <Tab>Core Loop</Tab>

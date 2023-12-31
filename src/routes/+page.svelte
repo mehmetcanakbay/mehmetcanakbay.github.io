@@ -9,11 +9,14 @@
     import "prismjs/components/prism-python"
     import SANGIDescription from "$lib/descriptions/SANGIDescription.svelte"
     import DlDescription from "$lib/descriptions/DLDescription.svelte";
+    import MiscDescription from "$lib/descriptions/MiscDescription.svelte";
     import Swiper from "swiper"
     import {Autoplay} from "swiper/modules"
     import "swiper/css"
     import { codeExamples } from "./codeExamples";
-    let swiper : Swiper;
+    let dlSwiper : Swiper
+    let miscSwiper : Swiper
+
     let pageLoaded : boolean = false
     onMount(()=>{
         pageLoaded = true
@@ -23,7 +26,7 @@
     })
 
     function SwiperInitializer() {
-        swiper = new Swiper('.deepLearningSwiperContainer', {
+        dlSwiper = new Swiper('.deepLearningSwiperContainer', {
             modules: [Autoplay],
             autoplay: {
                 delay: 4000,
@@ -31,7 +34,17 @@
             },
         });
 
-        swiper.autoplay.stop()
+        dlSwiper.autoplay.stop()
+
+        miscSwiper = new Swiper('.miscellaneousSwiperContainer', {
+            modules: [Autoplay],
+            autoplay: {
+                delay: 2000,
+                disableOnInteraction: false
+            },
+        })
+
+        miscSwiper.autoplay.stop()
     }
 
     function HandleMainTabbers() {
@@ -42,7 +55,8 @@
         tabs.forEach(tab => {
             tab.addEventListener("click", () => {
                 const target = document.querySelectorAll(tab.dataset.tabTarget)
-                swiper.autoplay.pause()
+                dlSwiper.autoplay.stop()
+                miscSwiper.autoplay.stop()
 
                 tabsContents.forEach(content=>{
                     content.classList.remove("active")
@@ -59,12 +73,16 @@
                 target.forEach(element => {
                     element.classList.add("active")
                 })
-                tab.classList.add("active")
 
-                console.log(tab.dataset.tabTarget === "#deep-learning");
+                tab.classList.add("active")
                 
+                //TAB STUFF RESTART AUTOPLAY
                 if (tab.dataset.tabTarget === "#deep-learning") {
-                    swiper.autoplay.start()
+                    dlSwiper.autoplay.start()
+                }
+
+                if (tab.dataset.tabTarget === "#miscellaneous") {
+                    miscSwiper.autoplay.start()
                 }
 
             })
@@ -122,6 +140,7 @@
             <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 active cursor-pointer" data-tab-target="#SANGI">SANGI</li>
             <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#ability-system">Ability System</li>
             <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#deep-learning">Deep Learning</li>
+            <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#miscellaneous">Miscellaneous</li>
 
         </ul>
 
@@ -195,6 +214,29 @@
 
                 </Explanation>
             </div>
+
+            <div id="miscellaneous" data-tab-content class="h-full text-ash-gray-100 overflow-y-scroll scrollbar-hide w-full">
+                <div class="swiper miscellaneousSwiperContainer w-full h-full">
+                    <div class=" swiper-wrapper w-full h-full bg-ash-gray-850">    
+                        <div class="swiper-slide  w-full h-full overflow-hidden">
+                            <img src="gifs/shaderexample.gif" alt="neural example" class="object-cover">
+                        </div>
+
+                        <div class="swiper-slide  w-full h-full overflow-hidden">
+                            <img src="images/noisemaker.png" alt="neural example" class="">
+                        </div>
+                    </div>
+                </div>
+                
+                <Explanation title="Short Description" class="z-10 block bottom-12 md:bottom-32 absolute px-4 md:px-12">
+                    I like shader coding a lot. Shadertoy is one of my favourite websites. Because of that, I also like to tinker 
+                    with shader graph and visual effect graph. In the first image, I created a shader graph, with exposed parameters, which
+                    I controlled using visual effect graph to achieve the effect below. In the second image, its an image from one of my  
+                    repositories, which consist of code that helped me achieve some of the effects I wanted, 
+                    or wanted to see how some effects were done completely from scratch. It includes a perlin noise from scratch,
+                    a flowfield made from scratch etc.
+                </Explanation>
+            </div>
         </div>
     </div>
 </div>
@@ -253,6 +295,15 @@
         </div>
 
         <DlDescription/>
+    </div>
+
+    <div id="miscellaneous" data-tab-descriptor class="">
+        <div class="flex flex-col gap-0 pb-1">
+            <h1 class="text-4xl md:text-6xl text-ash-gray-100 font-semibold">Miscellaneous</h1>
+            <h3 class="text-2xl md:text-2xl text-ash-gray-400 font-medium -mt-1">Various Other Works I Have Done</h3>
+        </div>  
+
+        <MiscDescription/>
     </div>
 </div>
 <!-- <h1 class="bg-pinky-red-100 h-96">DETAILS</h1> -->
