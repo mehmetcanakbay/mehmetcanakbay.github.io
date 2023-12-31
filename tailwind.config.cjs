@@ -4,7 +4,7 @@ const config = {
 
 	theme: {
 		fontFamily: {
-			"sans": ['outfit', 'system-ui']
+			"sans": ['Outfit', 'system-ui']
 		},
 
 		
