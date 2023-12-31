@@ -29,7 +29,7 @@
         dlSwiper = new Swiper('.deepLearningSwiperContainer', {
             modules: [Autoplay],
             autoplay: {
-                delay: 4000,
+                delay: 1500,
                 disableOnInteraction: false
             },
         });
