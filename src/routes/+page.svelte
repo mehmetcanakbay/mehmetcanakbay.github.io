@@ -98,14 +98,14 @@
             <Name/>
         </div>
 
-        <div class="summary mt-24 flex flex-col gap-2 relative">
+        <div class="summary mt-24 md:mt-2 2xl:mt-24 flex flex-col gap-2 relative">
             <!--this is the animation div no delay to this-->
             <div class="w-full h-auto relative">
                 <div class="w-[105%] h-full absolute top-0 bg-pinky-red-100 
                 {pageLoaded ? "scale-x-100 origin-left delay05s" : "scale-x-0 origin-left"} z-10"></div>
     
-                <h1 class="text-6xl  text-ash-gray-100 {pageLoaded ? "opacity-100" : "opacity-0"} delay-500">Game &</h1>
-                <h1 class="text-6xl  text-ash-gray-100 {pageLoaded ? "opacity-100" : "opacity-0"} delay-500">Software Developer</h1>
+                <h1 class="text-6xl md:text-4xl 2xl:text-6xl  text-ash-gray-100 {pageLoaded ? "opacity-100" : "opacity-0"} delay-500">Game &</h1>
+                <h1 class="text-6xl md:text-4xl 2xl:text-6xl  text-ash-gray-100 {pageLoaded ? "opacity-100" : "opacity-0"} delay-500">Software Developer</h1>
             </div>
             
             <!--animation div again-->
@@ -113,13 +113,13 @@
                 <div class="w-[105%] h-full absolute bottom-0 bg-pinky-red-100
                 {pageLoaded ? "scale-x-100 origin-left delay1s" : "scale-x-0 origin-left"} z-10"></div>
     
-                <p class="text-lg text-ash-gray-200 mt-4 {pageLoaded ? "opacity-100" : "opacity-0"} delay-1000">I’m Mehmet Can Akbay, a game and software developer based in Istanbul. 
+                <p class="text-lg md:text-base 2xl:text-lg text-ash-gray-200 mt-4 {pageLoaded ? "opacity-100" : "opacity-0"} delay-1000">I’m Mehmet Can Akbay, a game and software developer based in Istanbul. 
                     Click on my works and scroll down for more details.</p>
 
             </div>
         </div>
 
-        <div class="external-links mt-20 md:mt-40 flex flex-col gap-1 relative">
+        <div class="external-links mt-20 md:mt-5 2xl:mt-40 flex flex-col gap-1 relative">
             <!--animation div again-->
             <div class="w-[105%] h-full absolute bottom-0 bg-pinky-red-100 
             {pageLoaded ? "scale-x-100 origin-left delay15s" : "scale-x-0 origin-left"} z-10"></div>
@@ -136,11 +136,11 @@
     <!--RIGHT SIDE CONTENT-->
 
     <div class="w-full md:w-8/12 h-[48rem] md:h-screen relative {pageLoaded ? "opacity-100" : "opacity-0"} transition-opacity duration-1000">
-        <ul class="ml-auto flex flex-col justify-end items-end gap-4 md:gap-12 mt-32 mr-4 absolute right-0 z-10 tabs">
-            <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 active cursor-pointer" data-tab-target="#SANGI">SANGI</li>
-            <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#ability-system">Ability System</li>
-            <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#deep-learning">Deep Learning</li>
-            <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#miscellaneous">Miscellaneous</li>
+        <ul class="ml-auto flex flex-col justify-end items-end gap-4 md:gap-8 2xl:gap-12 mt-32 md:mt-16 2xl:mt-32 mr-4 absolute right-0 z-10 tabs">
+            <li class="text-2xl 2xl:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 active cursor-pointer" data-tab-target="#SANGI">SANGI</li>
+            <li class="text-2xl 2xl:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#ability-system">Ability System</li>
+            <li class="text-2xl 2xl:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#deep-learning">Deep Learning</li>
+            <li class="text-2xl 2xl:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#miscellaneous">Miscellaneous</li>
 
         </ul>
 
@@ -152,7 +152,7 @@
                         loop
                         muted
                         playsinline
-                        class="h-[80%] mt-20 scale-[2.5] lg:scale-[2.2] xl:scale-[1.7] overflow-hidden brightness-75"
+                        class="h-[80%] mt-20 scale-[2.5] lg:scale-[2.2] 2xl:scale-[1.7] overflow-hidden brightness-75"
                     >
                         <source
                         src="video/sangi.mp4"
@@ -163,7 +163,7 @@
 
                 </div>
 
-                <Explanation title="Short Description" class="z-10 block bottom-12 md:bottom-32 absolute px-4 md:px-12">I have completed my game, which is a fast paced 2D platformer with 4 different weapons
+                <Explanation title="Short Description" class="z-10 block bottom-12 md:bottom-10 2xl:bottom-32 absolute px-4 md:px-12">I have completed my game, which is a fast paced 2D platformer with 4 different weapons
                     that apply their own element on enemies, which can then cause a reaction if another element
                     hits the affected enemy. It's available on Steam. For more details, scroll down. </Explanation>
             </div>
@@ -248,8 +248,8 @@
 <div class="descriptions px-4 md:px-52 py-8 pb-28" >
     <div id="SANGI" data-tab-descriptor class="active">
         <div class="flex flex-col gap-0 pb-1">
-            <h1 class="text-4xl md:text-6xl text-ash-gray-100 font-semibold">SANGI</h1>
-            <h3 class="text-2xl md:text-2xl text-ash-gray-400 font-medium -mt-1">2D Action Platformer Game</h3>
+            <h1 class="text-4xl 2xl:text-6xl text-ash-gray-100 font-semibold">SANGI</h1>
+            <h3 class="text-2xl 2xl:text-2xl text-ash-gray-400 font-medium -mt-1">2D Action Platformer Game</h3>
         </div>
 
         <SANGIDescription/>
@@ -257,8 +257,8 @@
 
     <div id="ability-system" data-tab-descriptor>
         <div class="flex flex-col gap-0 pb-1">
-            <h1 class="text-3xl md:text-6xl text-ash-gray-100 font-semibold">Ability System</h1>
-            <h3 class="text-xl md:text-2xl text-ash-gray-400 font-medium ">Ability System made for Unity</h3>
+            <h1 class="text-3xl 2xl:text-6xl text-ash-gray-100 font-semibold">Ability System</h1>
+            <h3 class="text-xl 2xl:text-2xl text-ash-gray-400 font-medium ">Ability System made for Unity</h3>
         </div>
 
         <div class="text-ash-gray-200 text-base md:text-lg py-4">
@@ -290,8 +290,8 @@
 
     <div id="deep-learning" data-tab-descriptor class="">
         <div class="flex flex-col gap-0 pb-1">
-            <h1 class="text-4xl md:text-6xl text-ash-gray-100 font-semibold">Deep Learning</h1>
-            <h3 class="text-2xl md:text-2xl text-ash-gray-400 font-medium -mt-1">In-depth Explanation of the Works Mentioned</h3>
+            <h1 class="text-4xl 2xl:text-6xl text-ash-gray-100 font-semibold">Deep Learning</h1>
+            <h3 class="text-2xl 2xl:text-2xl text-ash-gray-400 font-medium -mt-1">In-depth Explanation of the Works Mentioned</h3>
         </div>
 
         <DlDescription/>
@@ -299,8 +299,8 @@
 
     <div id="miscellaneous" data-tab-descriptor class="">
         <div class="flex flex-col gap-0 pb-1">
-            <h1 class="text-4xl md:text-6xl text-ash-gray-100 font-semibold">Miscellaneous</h1>
-            <h3 class="text-2xl md:text-2xl text-ash-gray-400 font-medium -mt-1">Various Other Works I Have Done</h3>
+            <h1 class="text-4xl 2xl:text-6xl text-ash-gray-100 font-semibold">Miscellaneous</h1>
+            <h3 class="text-2xl 2xl:text-2xl text-ash-gray-400 font-medium -mt-1">Various Other Works I Have Done</h3>
         </div>  
 
         <MiscDescription/>
