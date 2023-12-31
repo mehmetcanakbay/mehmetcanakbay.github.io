@@ -113,8 +113,8 @@
                 <div class="w-[105%] h-full absolute bottom-0 bg-pinky-red-100
                 {pageLoaded ? "scale-x-100 origin-left delay1s" : "scale-x-0 origin-left"} z-10"></div>
     
-                <p class="text-lg text-ash-gray-200 mt-4 {pageLoaded ? "opacity-100" : "opacity-0"} delay-1000">I’m Mehmet Can Akbay, a game and software developer, based in Istanbul. 
-                    You can see my works on the right side. Click on them and scroll down for more details.</p>
+                <p class="text-lg text-ash-gray-200 mt-4 {pageLoaded ? "opacity-100" : "opacity-0"} delay-1000">I’m Mehmet Can Akbay, a game and software developer based in Istanbul. 
+                    Click on my works and scroll down for more details.</p>
 
             </div>
         </div>
@@ -135,7 +135,7 @@
 
     <!--RIGHT SIDE CONTENT-->
 
-    <div class="w-full md:w-8/12 h-[48rem] md:h-screen relative">
+    <div class="w-full md:w-8/12 h-[48rem] md:h-screen relative {pageLoaded ? "opacity-100" : "opacity-0"} transition-opacity duration-1000">
         <ul class="ml-auto flex flex-col justify-end items-end gap-4 md:gap-12 mt-32 mr-4 absolute right-0 z-10 tabs">
             <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 active cursor-pointer" data-tab-target="#SANGI">SANGI</li>
             <li class="text-2xl md:text-4xl font-bold text-ash-gray-100 origin-right tab opacity-50 cursor-pointer" data-tab-target="#ability-system">Ability System</li>
